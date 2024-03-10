@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope Animation</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            animation: openEnvelope 2s ease-out forwards;
+        }
+
+        #letter {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 90%;
+            max-height: 90%;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+            text-align: center;
+            line-height: 1.6em;
+            /* Adjust this to center vertically */
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes openEnvelope {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="envelope">
+        <div id="letter"></div>
+    </div>
+
+    <script>
+        // JavaScript for the letter display animation
+        window.onload = function () {
+            var letterDiv = document.getElementById('letter');
+            var textContent = '我是陈梓瑞水电费不个表示对技术部比U盾水果等各个器官我跟问题为前提为他王企US法规is噶或诶我回头IE维特委托我问他我问他为前提为台湾一切如意热与二还有人恩阳区热与人用确认他如义务人用认为用reuse问题erupt人u诶 二五玩儿u二u热物语鹅特';
+            var textArray = textContent.split(''); // Convert the text into an array of characters
+            var index = 0;
+            var intervalId;
+
+            // Show the letter container after the envelope animation ends
+            setTimeout(function () {
+                letterDiv.style.display = 'block';
+
+                // Start the interval to add each character
+                intervalId = setInterval(function () {
+                    if (index < textArray.length) {
+                        letterDiv.innerText += textArray[index++];
+                    } else {
+                        clearInterval(intervalId);
+                    }
+                }, 50); // 50ms interval
+            }, 2000); // Wait for 2s (2000ms) after envelope animation ends
+        };
+    </script>
+
+</body>
+
+</html>
